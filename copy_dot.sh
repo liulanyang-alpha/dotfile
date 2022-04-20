@@ -14,3 +14,5 @@ cp ${basedir}/dot/.zshrc ~/.zshrc
 
 mkdir -p ~/env
 cp -r ${basedir}/bin ~/env/bin
+
+echo "==> copy done!!!"
