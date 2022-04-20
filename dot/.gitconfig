@@ -1,0 +1,30 @@
+[user]
+	name = liulanyang-alpha
+	email = liulanyang-alpha@outlook.com
+	
+[alias]
+	lg = log --all --graph --abbrev-commit --decorate
+	br = branch -vv
+	st = status
+	ck = checkout
+	cp = cherry-pick
+
+[core]
+	quotepath = false
+	filemode = false
+
+[pull]
+	rebase = true
+
+[color]
+	ui = auto
+
+[gc]
+	autoDetach = false
+
+[pager]
+	branch = false
+
+[apply]
+	# Detect whitespace errors when applying a patch
+	whitespace = fix
