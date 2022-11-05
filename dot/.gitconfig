@@ -1,6 +1,6 @@
 [user]
 	name = liulanyang-alpha
-	email = liulanyang-alpha@outlook.com
+	email = example@outlook.com
 	
 [alias]
 	lg = log --all --graph --abbrev-commit --decorate
