@@ -22,29 +22,28 @@ conda_prompt_info() {
 
 # Check the UID
 if [[ $UID -ne 0 ]]; then # normal user
-  PR_USER='%F{green}%n%f'
-  PR_USER_OP='%F{green}%#%f'
+  PR_USER='%F{cyan}%n%f'
+  PR_USER_OP='%F{cyan}@%f'
   PR_PROMPT='%f➤ %f'
 else # root
   PR_USER='%F{red}%n%f'
-  PR_USER_OP='%F{red}%#%f'
+  PR_USER_OP='%F{red}@%f'
   PR_PROMPT='%F{red}➤ %f'
 fi
 
 
 # Check if we are on SSH or not
 if [[ -n "$SSH_CLIENT"  ||  -n "$SSH2_CLIENT" ]]; then
-  PR_HOST='%F{cyan}%M%f' # SSH
+  PR_HOST='%F{red}%M%f' # SSH
 else
-  PR_HOST='%F{green}%M%f' # no SSH
+  PR_HOST='%F{cyan}%M%f' # no SSH
 fi
 
-
 local user_color='green'; [ $UID -eq 0 ] && user_color='red'
-PROMPT='${PR_USER}%F{white}@${PR_HOST} %{$fg[$user_color]%}$(_fishy_collapsed_wd)%{$reset_color%}%(!.#.>) '
+PROMPT='${PR_USER}${PR_USER_OP}${PR_HOST} %{$fg[$user_color]%}$(_fishy_collapsed_wd)%{$reset_color%}%(!.#.>) '
 #PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
 
-local return_status="%{$fg_bold[red]%}%(?..%?)%{$reset_color%}"
+# local return_status="%{$fg_bold[red]%}%(?..%?)%{$reset_color%}"
 #RPROMPT="${RPROMPT}"'${return_status}$(git_prompt_info)$(git_prompt_status)%{$reset_color%}'
 
 RPROMPT='${ret_status} %{$fg[blue]%}$(git_current_branch)%{$reset_color%}'
