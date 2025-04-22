@@ -17,7 +17,7 @@ CONTAINER_PORT=$2
 LOCAL_PORT=$2
 SERVER=$3
 
-ssh -t $3 "docker exec -it $CONTAINER_NAME  bash -c 'service ssh restart'"
+ssh -t $SERVER "docker exec -it $CONTAINER_NAME  bash -c 'service ssh restart'"
 
 echo $CONTAINER_NAME $CONTAINER_PORT $SERVER
 echo "🔍 正在查找容器 $CONTAINER_NAME 的IP地址..."
