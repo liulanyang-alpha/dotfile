@@ -12,12 +12,12 @@ if [ $# -lt 3 ]; then
   exit 1
 fi
 
-CONTAINER_NAME=$1
-CONTAINER_PORT=$2
-LOCAL_PORT=$2
-SERVER=$3
+CONTAINER_NAME=$2
+CONTAINER_PORT=22
+LOCAL_PORT=$3
+SERVER=$1
 
-ssh -t $SERVER "docker exec -it $CONTAINER_NAME  bash -c 'service ssh restart'"
+ssh -t $SERVER "docker exec -it $CONTAINER_NAME  bash -c 'apt update && apt install -y openssh-server && service ssh restart'"
 
 echo $CONTAINER_NAME $CONTAINER_PORT $SERVER
 echo "🔍 正在查找容器 $CONTAINER_NAME 的IP地址..."
