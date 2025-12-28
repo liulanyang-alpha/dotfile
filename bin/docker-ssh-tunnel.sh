@@ -38,16 +38,14 @@ docker exec $CONTAINER_NAME chmod 700 /root/.ssh
 #### 4 codex的代理
 ssh -t "$SERVER" "
 docker exec $CONTAINER_NAME bash -lc '
-SETTINGS=/root/.vscode-server/data/Machine/settings.json
-mkdir -p "\$(dirname \"\$SETTINGS\")"
-cat > "\$SETTINGS" <<'EOF'
+mkdir -p /root/.vscode-server/data/Machine
+cat > /root/.vscode-server/data/Machine/settings.json <<'EOF'
 {
-  "http.proxy": "http://127.0.0.1:27897",
-  "http.proxySupport": "on"
+  \"http.proxy\": \"http://127.0.0.1:27897\",
+  \"http.proxySupport\": \"on\"
 }
 EOF
-'
-"
+'"
 
 #### 5 获得容器的ip，并反向代理
 echo $CONTAINER_NAME $CONTAINER_PORT $SERVER
