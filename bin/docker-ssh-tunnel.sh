@@ -25,14 +25,15 @@ fi
 '"
 
 #### 3. 处理ssh登陆问题 ssh免登陆
-NEW_PASSWD=123456
-ssh -t "$SERVER" "docker exec $CONTAINER_NAME bash -c 'echo \"root:$NEW_PASSWD\" | chpasswd'"
 ssh -t "$SERVER" "
 docker exec $CONTAINER_NAME mkdir -p /root/.ssh &&
 docker cp ~/.ssh/authorized_keys $CONTAINER_NAME:/root/.ssh/authorized_keys &&
 docker exec $CONTAINER_NAME chown root:root /root/.ssh/authorized_keys &&
 docker exec $CONTAINER_NAME chmod 600 /root/.ssh/authorized_keys &&
-docker exec $CONTAINER_NAME chmod 700 /root/.ssh
+docker exec $CONTAINER_NAME chmod 700 /root/.ssh &&
+docker cp .tmux.conf $CONTAINER_NAME:/root/ && 
+docker cp .gitconfig $CONTAINER_NAME:/root/ && 
+docker cp .vimrc $CONTAINER_NAME:/root/
 "
 
 #### 4 codex的代理
