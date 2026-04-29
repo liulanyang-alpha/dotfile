@@ -3,7 +3,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 BASE_DIR="$SCRIPT_DIR"
-DEFAULT_WORKDIR="$(cd -- "$BASE_DIR/.." && pwd)"
+DEFAULT_WORKDIR="$PWD"
 export NVM_DIR="$BASE_DIR/.nvm"
 export CODEX_HOME="$BASE_DIR/.codex"
 
